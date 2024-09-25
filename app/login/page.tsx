@@ -1,9 +1,10 @@
 import Auth from '@/components/Auth'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
   return (
-   <Auth authText='Sign up' alterAuth='Login' alterAuthLink='login'/> 
+<Auth authText='Log in' alterAuth='Sign up' alterAuthLink='signup'/>
   )
 }
 
