@@ -9,8 +9,8 @@ const page = () => {
         <div className='flex justify-around gap-10'>
             <div className='flex flex-col items-center'>
                 <label htmlFor="mood" className='font-semibold'>mood</label>
-                <select className='px-3 py-1 rounded my-2' name="mood" id="mood" defaultValue={'select'}>
-                     <option value="select">select</option>
+                <select className='px-3 py-1 rounded my-2 bg-white border' name="mood" id="mood" defaultValue={'select'}>
+                     <option value="">select</option>
                     <option value="happy">happy</option>
                     <option value="happy2">happy2</option>
                     <option value="happy3">happy3</option>
@@ -20,8 +20,8 @@ const page = () => {
 
             <div className='flex flex-col items-center'>
                 <label htmlFor="topic" className='font-semibold'>topic</label>
-                <select className='px-3 py-1 rounded my-2'name="topic" id="topic" defaultValue={'select'}>
-                    <option value="select">select</option>
+                <select className='px-3 py-1 rounded my-2 bg-white border'name="topic" id="topic" defaultValue={'select'}>
+                    <option value="">select</option>
                     <option value="happy">happy</option>
                     <option value="happy">happy2</option>
                     <option value="happy">happy3</option>

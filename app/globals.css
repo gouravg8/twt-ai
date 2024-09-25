@@ -17,6 +17,6 @@ body {
 
 @layer utilities {
   .clip-poly {
-      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)
+      clip-path: polygon(7% 10%, 100% 10%, 96% 90%, 0% 90%)
   }
 }
