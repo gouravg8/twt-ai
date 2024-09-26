@@ -1,60 +1,67 @@
+"use client";
 import TweetSkeleton from "@/components/TweetSkeleton";
 import Link from "next/link";
-import React from "react";
+import React, { useRef, useState } from "react";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 const page = () => {
-	const isLoaded = false;
+	// TODO: create tweet
+	const [isLoaded, setIsLoaded] = useState(true);
+	const [haveTweet, setHaveTweet] = useState(true);
+	const [tweet, setTweet] = useState("No tweet");
+	const tweetRef = useRef(null);
 	return (
 		<div className="flex flex-col items-center my-16">
 			<div className="flex justify-around gap-10">
-				<div className="flex flex-col items-center">
-					<label htmlFor="mood" className="font-semibold">
-						mood
-					</label>
-					<select
-						className="px-3 py-1 rounded my-2 bg-white border"
-						name="mood"
-						id="mood"
-						defaultValue={"select"}
-					>
-						<option value="">select</option>
-						<option value="happy">happy</option>
-						<option value="happy2">happy2</option>
-						<option value="happy3">happy3</option>
-						<option value="happy4">happy4</option>
-					</select>
-				</div>
+				<Select>
+					<SelectTrigger className="w-[120px] bg-slate-200 border-0">
+						<SelectValue placeholder="Mood" />
+					</SelectTrigger>
+					<SelectContent>
+						<SelectItem value="light">Light</SelectItem>
+						<SelectItem value="dark">Dark</SelectItem>
+						<SelectItem value="system">System</SelectItem>
+					</SelectContent>
+				</Select>
 
-				<div className="flex flex-col items-center">
-					<label htmlFor="topic" className="font-semibold">
-						topic
-					</label>
-					<select
-						className="px-3 py-1 rounded my-2 bg-white border"
-						name="topic"
-						id="topic"
-						defaultValue={"select"}
-					>
-						<option value="">select</option>
-						<option value="happy">happy</option>
-						<option value="happy">happy2</option>
-						<option value="happy">happy3</option>
-						<option value="happy">happy4</option>
-					</select>
-				</div>
+				<Select>
+					<SelectTrigger className="w-[120px] bg-slate-200 border-0">
+						<SelectValue placeholder="Topic" />
+					</SelectTrigger>
+					<SelectContent>
+						<SelectItem value="light">Light</SelectItem>
+						<SelectItem value="dark">Dark</SelectItem>
+						<SelectItem value="system">System</SelectItem>
+					</SelectContent>
+				</Select>
 			</div>
-			<Link
-				href={""}
-				className="bg-[--main-color] w-fit mx-auto text-white px-5 py-2 rounded-full my-5 font-semibold"
-			>
-				Create
+			<Link href={""}>
+				<Button
+					size={"lg"}
+					className="bg-[--main-color] w-fit mx-auto text-white px-5 py-2 my-5 font-semibold"
+				>
+					Create
+				</Button>
 			</Link>
 
-			<div className="w-5/6 my-6 mx-auto border border-dashed px-6">
-				{!isLoaded ? (
-					<TweetSkeleton className="mx-auto w-full" />
+			<div className="w-5/6 my-6 mx-auto border border-dashed px-6 rounded-md">
+				{haveTweet ? (
+					!isLoaded ? (
+						<TweetSkeleton />
+					) : (
+						<div ref={tweetRef} className="px-2 py-6">
+							{tweet}
+						</div>
+					)
 				) : (
-					<div className="px-2 py-6">hii</div>
+					<></>
 				)}
 			</div>
 		</div>

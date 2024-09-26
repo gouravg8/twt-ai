@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Card } from "./ui/card";
+import { motion } from "framer-motion";
 
 type AuthTypes = {
 	authText: string;
@@ -15,8 +18,13 @@ const googleLogoStyle = {
 
 const Auth = ({ authText, alterAuth, alterAuthLink }: AuthTypes) => {
 	return (
-		<div className="flex flex-col h-[65vh] justify-center align-middle mx-auto text-center py-32">
-			<div className="bg-white shadow-lg w-5/6 py-8 mx-auto rounded-xl">
+		<motion.div
+			initial={{ opacity: 0, x: -100 }}
+			animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
+			className="flex flex-col h-[65vh] justify-center align-middle mx-auto text-center py-32"
+		>
+			<Card className="w-5/6 mx-auto py-12 shadow-lg">
+				{/* <div className="bg-white shadow-lg w-5/6 py-8 mx-auto rounded-xl"> */}
 				<div className="text-sm w-4/5 flex align-middle justify-center items-center gap-4 mx-auto border border-gray-300 p-3 rounded my-4">
 					<Image
 						src={"/google-logo.png"}
@@ -44,8 +52,9 @@ const Auth = ({ authText, alterAuth, alterAuthLink }: AuthTypes) => {
 						{alterAuth}
 					</Link>
 				</p>
-			</div>
-		</div>
+				{/* </div> */}
+			</Card>
+		</motion.div>
 	);
 };
 
