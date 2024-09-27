@@ -19,6 +19,9 @@ body {
 	.clip-poly {
 		clip-path: polygon(7% 10%, 100% 10%, 96% 90%, 0% 90%);
 	}
+	.clip-poly-md {
+		clip-path: polygon(7% 10%, 100% 10%, 96% 90%, 0% 90%);
+	}
 }
 
 @tailwind base;

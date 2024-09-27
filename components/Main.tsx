@@ -1,62 +1,63 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React from "react";
 import { Button } from "./ui/button";
-import { motion, stagger, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
+import { div } from "framer-motion/client";
 
 const Main = () => {
-	const imgUrl = ["tweet.jpg", "tweet2.jpg", "tweet.jpg"];
+	const imgUrl = ["tweet.jpg", "tweet.jpg"];
 	return (
-		<div className="flex flex-col justify-center align-middle text-center my-12">
-			<motion.div>
+		<div className="flex flex-col md:flex-row md:gap-0 md:items-center md:h-[85vh] md:my-auto justify-center align-middle text-center my-12">
+			<div className="md:w-1/2">
 				<motion.h1
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
-					className="text-5xl mx-auto font-poppins font-bold"
+					className="md:text-5xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
 				>
 					Elevate Your Twitter Game <br />
-					<span className="bg-[--main-color] text-white px-4 my-8 clip-poly ">
+					<span className="bg-[--main-color] text-white px-4 my-8 clip-poly md:clip-poly-md">
 						with Ai
 					</span>
 				</motion.h1>
-			</motion.div>
-			{/* animate below paragram such that each word comes from left to right */}
-			<motion.p
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.5, duration: 0.5 }}
-				className="text-gray-500 mt-10 mb-5 w-5/6 font-medium mx-auto text-lg"
-			>
-				Your ultimate AI-powered tool for crafting the perfect tweets
-				effortlessly
-			</motion.p>
-			<Link className="w-fit mx-auto" href={"/signup"}>
+				<motion.p
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 0.5, duration: 0.5 }}
+					className="text-gray-500 mt-10 mb-5 w-5/6 font-medium mx-auto text-lg"
+				>
+					Your ultimate AI-powered tool for crafting the perfect tweets
+					effortlessly
+				</motion.p>
 				<motion.div
+					className="w-fit mx-auto"
 					whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1, duration: 0.5 }}
 				>
-					<Button
-						onClick={() => "/login"}
-						className="bg-[--main-color] text-white px-5 py-2 my-5 font-semibold"
-					>
-						Start Creating
-					</Button>
+					<Link className="w-fit" href={"/signup"}>
+						<Button
+							onClick={() => "/login"}
+							className="bg-[--main-color] text-white px-5 py-2 md:px-8 md:py-6 md:text-xl md:font-normal my-5 font-semibold"
+						>
+							Start Creating
+						</Button>
+					</Link>
 				</motion.div>
-			</Link>
+			</div>
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 1.5, duration: 0.5 }}
-				className="w-5/6 mx-auto border-2 border-dashed border-[--main-color] mt-8 p-2 rounded flex flex-col gap-5"
+				className="w-11/12 md:w-1/3 mx-auto md:mx-0 h-fit  mt-8 md:-mt-24 p-2 rounded flex flex-col gap-5"
 			>
-				{imgUrl.map((item) => (
+				{imgUrl.map((item, index) => (
 					<div key={item}>
 						<Image
-							className="shadow-xl rounded-md"
+							className={`shadow-2xl rounded-md w-2/3 ${index % 2 === 0 ? "absolute top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/6 z-20" : "relative z-10"}`}
 							width={500}
 							height={0}
 							src={"/tweet1.png"}

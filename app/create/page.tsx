@@ -18,7 +18,7 @@ const page = () => {
 	const [tweet, setTweet] = useState("No tweet");
 	const tweetRef = useRef(null);
 	return (
-		<div className="flex flex-col items-center my-16">
+		<div className="h-[50vh] md:h-[65vh] flex flex-col items-center my-16">
 			<div className="flex justify-around gap-10">
 				<Select>
 					<SelectTrigger className="w-[120px] bg-slate-200 border-0">

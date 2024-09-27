@@ -4,6 +4,7 @@ export default function Home() {
 	return (
 		<>
 			<Main />
+		{/* TODO: Add a how to use page */}
 		</>
 	);
 }
