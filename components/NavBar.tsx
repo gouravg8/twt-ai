@@ -9,12 +9,13 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { RiMenu3Line } from "@remixicon/react";
 
 const NavBar = () => {
 	// TODO: add authentication
 	const [isAuthenticated, setIsAuthenticated] = useState(true);
 	return (
-		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-2 bg-slate-200">
+		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 bg-slate-100 border-b">
 			<Link
 				href={"/"}
 				className="flex justify-center align-middle items-center text-base font-bold "
@@ -28,13 +29,15 @@ const NavBar = () => {
 				/>
 				TwtAi
 			</Link>
-			{/* 🍔 */}
 			<DropdownMenu>
 				<DropdownMenuTrigger className="outline-none px-4">
-					🍔
+					<RiMenu3Line className="size-5" />
 				</DropdownMenuTrigger>
 
-				<DropdownMenuContent align="end">
+				<DropdownMenuContent
+					align="end"
+					className="bg-slate-100 border-0 mt-3 shadow-lg"
+				>
 					<DropdownMenuLabel>My Account</DropdownMenuLabel>
 					<Link href={"/create"}>
 						<DropdownMenuItem>Create</DropdownMenuItem>

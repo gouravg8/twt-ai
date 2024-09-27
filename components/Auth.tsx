@@ -23,7 +23,7 @@ const Auth = ({ authText, alterAuth, alterAuthLink }: AuthTypes) => {
 			animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
 			className="w-full md:w-1/4 flex flex-col h-[70vh] md:h-[85vh] justify-center align-middle mx-auto text-center py-32"
 		>
-			<Card className="w-5/6 mx-auto py-12 shadow-lg">
+			<Card className="w-5/6 mx-auto py-12 shadow-lg border-0">
 				<div className="text-sm w-4/5 flex align-middle justify-center items-center gap-4 mx-auto border border-gray-300 p-3 rounded-lg my-4">
 					<Image
 						src={"/google-logo.png"}

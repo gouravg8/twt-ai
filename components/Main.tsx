@@ -12,15 +12,18 @@ const Main = () => {
 		<div className="flex flex-col md:flex-row md:gap-0 md:items-center md:h-[85vh] md:my-auto justify-center align-middle text-center my-12">
 			<div className="md:w-1/2">
 				<motion.h1
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
+					initial={{ opacity: 0, x: 20 }}
+					animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
 					className="md:text-5xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
 				>
 					Elevate Your Twitter Game <br />
-					<span className="bg-[--main-color] text-white px-4 my-8 clip-poly md:clip-poly-md">
-						with Ai
-					</span>
+				</motion.h1>
+				<motion.h1
+					initial={{ opacity: 0, x: -20 }}
+					animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
+					className="w-fit bg-[--main-color] text-white px-4 clip-poly md:clip-poly-md md:text-5xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
+				>
+					with Ai
 				</motion.h1>
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}

@@ -24,7 +24,7 @@ const page = () => {
 					<SelectTrigger className="w-[120px] bg-slate-200 border-0">
 						<SelectValue placeholder="Mood" />
 					</SelectTrigger>
-					<SelectContent>
+					<SelectContent className="border-0 shadow-lg">
 						<SelectItem value="light">Light</SelectItem>
 						<SelectItem value="dark">Dark</SelectItem>
 						<SelectItem value="system">System</SelectItem>
@@ -35,7 +35,7 @@ const page = () => {
 					<SelectTrigger className="w-[120px] bg-slate-200 border-0">
 						<SelectValue placeholder="Topic" />
 					</SelectTrigger>
-					<SelectContent>
+					<SelectContent className="border-0 shadow-md">
 						<SelectItem value="light">Light</SelectItem>
 						<SelectItem value="dark">Dark</SelectItem>
 						<SelectItem value="system">System</SelectItem>
