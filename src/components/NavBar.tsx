@@ -15,7 +15,7 @@ const NavBar = () => {
 	// TODO: add authentication
 	const [isAuthenticated, setIsAuthenticated] = useState(true);
 	return (
-		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 bg-slate-100 border-b">
+		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 md:py-3 bg-slate-100 border-b">
 			<Link
 				href={"/"}
 				className="flex justify-center align-middle items-center text-base font-bold "
