@@ -10,6 +10,8 @@ async function seedUsers() {
 				id: 1,
 				email: "johndoe@example.com",
 				name: "John Doe",
+				emailVerified: false,
+				image: "https://example.com/johndoe.jpg",
 			},
 			update: {},
 		});
@@ -22,6 +24,8 @@ async function seedUsers() {
 				id: 2,
 				email: "janesmith@example.com",
 				name: "Jane Smith",
+				emailVerified: false,
+				image: "https://example.com/janesmith.jpg",
 			},
 			update: {},
 		});
@@ -30,7 +34,6 @@ async function seedUsers() {
 		throw error;
 	}
 }
-
 async function seedTweets() {
 	const tweets = [
 		{

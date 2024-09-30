@@ -23,9 +23,32 @@ model Tweet{
   authorId Int
 }
 
+model Account{
+  id                Int @id @default(autoincrement())
+  userId            Int   @db.Integer
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
 model User {
   id  Int @id @default(autoincrement())
   email String @unique
-  name String
+  name String?
+  image String?
+  emailVerified Boolean @default(false)
   tweets Tweet[]
+  account Account[]
 }
