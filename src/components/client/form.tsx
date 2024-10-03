@@ -6,50 +6,38 @@ import { Input } from "../ui/input";
 import { credentialLogin } from "@/actions/login.action";
 import { credentialSignup } from "@/actions/signup.action";
 import { redirect } from "next/navigation";
-// import { redirect } from "next/navigation";
 
 const Login = () => {
+	const handleLogin = async (formData: FormData) => {
+		const email = formData.get("email") as string;
+		const password = formData.get("password") as string;
+
+		if (!email || !password)
+			toast({
+				title: "Error",
+				description: "Please provide all fields",
+				variant: "destructive",
+			});
+		const { err } = await credentialLogin({ email, password });
+		if (err)
+			toast({
+				title: "Error",
+				description: err,
+				variant: "destructive",
+			});
+
+		if (!err) {
+			toast({
+				title: "Success",
+				description: "Logged in successfully",
+				variant: "default",
+			});
+			redirect("/");
+		}
+	};
 	return (
 		<form
-			action={async (formData: FormData) => {
-				const email = formData.get("email") as string;
-				const password = formData.get("password") as string;
-
-				if (!email || !password)
-					toast({
-						title: "Error",
-						description: "Please provide all fields",
-						variant: "destructive",
-					});
-				// console.log("form before credlogin", email, password);
-				const { err } = await credentialLogin({ email, password });
-				if (err)
-					toast({
-						title: "Error",
-						description: err,
-						variant: "destructive",
-					});
-				// console.log(err, "form");
-				// console.log("form after credlogin", email, password);
-
-				if (!err) {
-					toast({
-						title: "Success",
-						description: "Logged in successfully",
-						variant: "default",
-					});
-					redirect("/");
-				}
-				// } else {
-				// 	toast({
-				// 		title: "Error",
-				// 		description: `${err} form 28`,
-				// 		variant: "destructive",
-				// 	});
-
-				// 	// redirect("/");
-				// }
-			}}
+			action={handleLogin}
 			className="grid w-full items-start text-left gap-6"
 		>
 			<div className="flex flex-col space-y-1.5">
@@ -104,7 +92,6 @@ const Signup = () => {
 						description: "Signup in successfully",
 						variant: "default",
 					});
-					// redirect("/login");
 				}
 			}}
 			className="grid w-full items-start text-left gap-6"

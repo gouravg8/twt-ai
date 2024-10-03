@@ -28,13 +28,9 @@ const credentialSignup = async ({ name, email, password }: Signup) => {
 			},
 		});
 
-		// console.log(name, email, password);
-
 		return { err: "" };
 	} catch (error) {
 		const err = error as CredentialsSignin;
-		// console.log(err.message);
-
 		return { err: err.message };
 	}
 };

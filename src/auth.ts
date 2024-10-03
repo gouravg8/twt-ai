@@ -57,11 +57,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
 				const isPasswordMatched = await compare(password, user.password);
 				if (!isPasswordMatched) {
-					// throw new CredentialsSignin("Password does not match");
-					return null;
+					throw new CredentialsSignin("Password does not match");
 				}
 
-				// console.log("email pass auth", email, user.password);
 				return { id: user.id.toString(), name: user.name, email: user.email };
 			},
 		}),
@@ -69,7 +67,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	pages: { signIn: "/login" },
 	callbacks: {
 		async redirect({ url, baseUrl }) {
-			// console.log(url, baseUrl, new URL(url).origin, "from auth callback");
 			if (url.startsWith("/")) return baseUrl + url;
 			if (url.startsWith(baseUrl)) return baseUrl;
 			return baseUrl;

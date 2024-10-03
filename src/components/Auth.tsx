@@ -9,7 +9,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { usePathname } from "next/navigation";
-import { signIn } from "@/auth";
 import { signinGoogle } from "@/actions/auth.action";
 
 type AuthTypes = {
@@ -40,7 +39,6 @@ const Auth = ({ authText, alterAuth, alterAuthLink }: AuthTypes) => {
 		} else {
 			console.log("signup");
 		}
-		// console.log(data);
 	};
 
 	return (
