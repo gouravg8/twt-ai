@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { div } from "framer-motion/client";
 
 const Main = () => {
 	const imgUrl = ["tweet.jpg", "tweet.jpg"];
@@ -58,7 +57,7 @@ const Main = () => {
 				className="w-11/12 md:w-1/3 mx-auto md:mx-0 h-fit  mt-8 md:-mt-24 p-2 rounded flex flex-col gap-5"
 			>
 				{imgUrl.map((item, index) => (
-					<div key={item}>
+					<div key={index.toString() + item}>
 						<Image
 							className={`shadow-2xl rounded-md w-2/3 ${index % 2 === 0 ? "absolute top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/6 z-20" : "relative z-10"}`}
 							width={500}

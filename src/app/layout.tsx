@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import type { Viewport } from "next";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
 	title: "twt Ai",
@@ -27,6 +28,7 @@ export default function RootLayout({
 				<NavBar />
 				{children}
 				<Footer />
+				<Toaster />
 			</body>
 		</html>
 	);
