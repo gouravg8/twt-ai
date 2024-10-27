@@ -1,18 +1,36 @@
+import { hash } from "bcryptjs";
 import db from "../src/db";
 
 async function seedUsers() {
 	try {
-		await db.user.upsert({
-			where: {
-				id: 1,
-			},
-			create: {
+		const user = [
+			{
 				id: 1,
 				email: "johndoe@example.com",
 				name: "John Doe",
 				password: "johndoepass",
 				emailVerified: false,
 				image: "https://example.com/johndoe.jpg",
+			},
+			{
+				id: 2,
+				email: "janesmith@example.com",
+				name: "Jane Smith",
+				password: "janesmithpass",
+				emailVerified: false,
+				image: "https://example.com/janesmith.jpg",
+			},
+		];
+
+		user[0].password = await hash(user[0].password, 10);
+		user[1].password = await hash(user[1].password, 10);
+
+		await db.user.upsert({
+			where: {
+				id: 1,
+			},
+			create: {
+				...user[0],
 			},
 			update: {},
 		});
@@ -22,12 +40,7 @@ async function seedUsers() {
 				id: 2,
 			},
 			create: {
-				id: 2,
-				email: "janesmith@example.com",
-				name: "Jane Smith",
-				password: "janesmithpass",
-				emailVerified: false,
-				image: "https://example.com/janesmith.jpg",
+				...user[1],
 			},
 			update: {},
 		});

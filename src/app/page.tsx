@@ -1,26 +1,25 @@
 import Main from "@/components/Main";
-import { auth, signOut } from "@/auth";
-import { redirect } from "next/navigation";
+import { auth, signOut } from "@/lib/auth";
+import { signOutAction } from "@/actions/auth.action";
 
 export default async function Home() {
+	return (
+		<>
+			<Main />
+			{/* TODO: Add a how to use page */}
+		</>
+	);
+}
+
+export async function SignOutCompo() {
 	const session = await auth();
 	return (
 		<>
 			{session && (
-				<>
-					<h1>Hello {session.user?.name}</h1>
-					<form
-						action={async () => {
-							"use server";
-							await signOut();
-						}}
-					>
-						<button type="submit">Log Out</button>
-					</form>
-				</>
+				<form action={signOutAction}>
+					<button type="submit">Log Out</button>
+				</form>
 			)}
-			<Main />
-			{/* TODO: Add a how to use page */}
 		</>
 	);
 }
