@@ -1,19 +1,19 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { RiMenu3Line } from "@remixicon/react";
+import { SignOutCompo } from "@/app/page";
+import { auth } from "@/lib/auth";
 
-const NavBar = () => {
+const NavBar = async () => {
 	// TODO: add authentication
-	const [isAuthenticated, setIsAuthenticated] = useState(true);
+	const session = await auth();
 	return (
 		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 md:py-3 bg-slate-100 border-b">
 			<Link
@@ -38,14 +38,21 @@ const NavBar = () => {
 					align="end"
 					className="bg-slate-100 border-0 mt-3 shadow-lg"
 				>
-					<DropdownMenuLabel>My Account</DropdownMenuLabel>
+					<Link href={"/profile"}>
+						<DropdownMenuItem className="text-base font-semibold">
+							{session?.user?.name}
+						</DropdownMenuItem>
+					</Link>
+
 					<Link href={"/create"}>
 						<DropdownMenuItem>Create</DropdownMenuItem>
 					</Link>
 					<DropdownMenuItem>Billing</DropdownMenuItem>
 
-					{isAuthenticated ? (
-						<DropdownMenuItem>Log out</DropdownMenuItem>
+					{session?.user ? (
+						<DropdownMenuItem>
+							<SignOutCompo />
+						</DropdownMenuItem>
 					) : (
 						<Link href={"/login"}>
 							<DropdownMenuItem>Log in</DropdownMenuItem>

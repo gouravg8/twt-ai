@@ -9,4 +9,9 @@ interface Login {
 	password: string;
 }
 
-export type { Signup, Login };
+type User = {
+	id: string;
+	email: string;
+	name: string;
+};
+export type { Signup, Login, User };
