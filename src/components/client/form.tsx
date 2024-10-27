@@ -12,29 +12,37 @@ const Login = () => {
 		const email = formData.get("email") as string;
 		const password = formData.get("password") as string;
 
-		if (!email || !password)
-			toast({
-				title: "Error",
-				description: "Please provide all fields",
-				variant: "destructive",
-			});
-		const { err } = await credentialLogin({ email, password });
-		if (err)
-			toast({
-				title: "Error",
-				description: err,
-				variant: "destructive",
+		try {
+			const res = await credentialLogin({ email, password }).then((ress) => {
+				console.log("res", { email, password, ress });
 			});
 
-		if (!err) {
+			// if (res.error) {
+			// 	toast({
+			// 		title: "Error",
+			// 		description: res.error,
+			// 		variant: "destructive",
+			// 	});
+			// 	return;
+			// }
+
+			// toast({
+			// 	title: "Success",
+			// 	description: "Logged in successfully",
+			// 	variant: "default",
+			// });
+			// redirect("/");
+		} catch (error) {
+			console.log("error", String(error));
+
 			toast({
-				title: "Success",
-				description: "Logged in successfully",
-				variant: "default",
+				title: "Error",
+				description: `Something went wrong${error}`,
+				variant: "destructive",
 			});
-			redirect("/");
 		}
 	};
+
 	return (
 		<form
 			action={handleLogin}
@@ -74,25 +82,30 @@ const Signup = () => {
 				const name = formData.get("name") as string;
 				const email = formData.get("email") as string;
 				const password = formData.get("password") as string;
-				const { err } = await credentialSignup({
+
+				const res = await credentialSignup({
 					name,
 					email,
 					password,
 				});
 
-				if (err) {
+				console.log("signup res", res?.err);
+
+				if (res?.err) {
 					toast({
 						title: "Error",
-						description: `${err} form 85`,
+						description: res.err,
 						variant: "destructive",
 					});
-				} else {
-					toast({
-						title: "Success",
-						description: "Signup in successfully",
-						variant: "default",
-					});
+					return;
 				}
+
+				toast({
+					title: "Success",
+					description: "Signup is successfully",
+					variant: "default",
+				});
+				redirect("/login");
 			}}
 			className="grid w-full items-start text-left gap-6"
 		>

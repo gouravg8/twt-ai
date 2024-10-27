@@ -1,20 +1,47 @@
 "use server";
-import { signIn } from "@/auth";
-import type { CredentialsSignin } from "next-auth";
+import { signIn } from "@/lib/auth";
+import { AuthError, CredentialsSignin } from "next-auth";
 import type { Login } from "@/types/auth.types";
 
-const credentialLogin = async ({ email, password }: Login) => {
+const credentialLogin = async ({ email, password }: Login): Promise<T> => {
 	try {
-		await signIn("credentials", {
+		const signInData = {
 			email,
 			password,
 			redirect: false,
-		});
+		};
 
-		return { err: "" };
+		const signinRes = await signIn("credentials", signInData);
+
+		// console.log("login.action, signinRes", signinRes);
+
+		if (signinRes.error) {
+			throw new CredentialsSignin(signinRes.error);
+		}
+
+		return { msg: "login.action, signinRes", signinRes };
 	} catch (error) {
-		const err = error as CredentialsSignin;
-		return { err: err.message, msg: "msg from login action catch" };
+		if (error instanceof CredentialsSignin) {
+			switch (error.name) {
+				case "CredentialsSignin":
+					console.log("login.action, catch", String(error));
+					return { error: String(error) };
+				default:
+					return { error: "Something went wrong" };
+			}
+		}
+		return { error: "An unexpected error occurred" };
 	}
 };
-export { credentialLogin };
+
+const googleLogin = async () => {
+	try {
+		await signIn("google", {
+			redirect: false,
+		});
+		return "google signin, login.action";
+	} catch (error) {
+		return error;
+	}
+};
+export { credentialLogin, googleLogin };
