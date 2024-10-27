@@ -3,7 +3,10 @@ import { signIn } from "@/lib/auth";
 import { AuthError, CredentialsSignin } from "next-auth";
 import type { Login } from "@/types/auth.types";
 
-const credentialLogin = async ({ email, password }: Login): Promise<T> => {
+const credentialLogin = async ({
+	email,
+	password,
+}: Login): Promise<Record<string, unknown>> => {
 	try {
 		const signInData = {
 			email,
@@ -33,7 +36,6 @@ const credentialLogin = async ({ email, password }: Login): Promise<T> => {
 		return { error: "An unexpected error occurred" };
 	}
 };
-
 const googleLogin = async () => {
 	try {
 		await signIn("google", {

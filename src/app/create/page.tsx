@@ -10,6 +10,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { moods, categories } from "@/constants";
 
 const page = () => {
 	// TODO: create tweet
@@ -25,9 +26,11 @@ const page = () => {
 						<SelectValue placeholder="Mood" />
 					</SelectTrigger>
 					<SelectContent className="border-0 shadow-lg">
-						<SelectItem value="light">Light</SelectItem>
-						<SelectItem value="dark">Dark</SelectItem>
-						<SelectItem value="system">System</SelectItem>
+						{moods.map((mood, index) => (
+							<SelectItem key={mood + index.toString()} value={mood}>
+								{mood}
+							</SelectItem>
+						))}
 					</SelectContent>
 				</Select>
 
@@ -36,9 +39,11 @@ const page = () => {
 						<SelectValue placeholder="Topic" />
 					</SelectTrigger>
 					<SelectContent className="border-0 shadow-md">
-						<SelectItem value="light">Light</SelectItem>
-						<SelectItem value="dark">Dark</SelectItem>
-						<SelectItem value="system">System</SelectItem>
+						{categories.map((category, index) => (
+							<SelectItem key={category + index.toString()} value={category}>
+								{category}
+							</SelectItem>
+						))}
 					</SelectContent>
 				</Select>
 			</div>
