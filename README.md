@@ -57,27 +57,41 @@ To set up TwTai locally, follow these steps:
     pnpm install
     ```
 
-4. **Set Up PostgreSQL Database with Docker:**
+4. **Copy environment variables**
+    ```bash
+    cp .env.example .env        # copiying env to .env file
+    pnpm dlx auth secret        # creating next auth secret
+    ```
+5. **Change your DB credentials & Nextauth secret in .env file**
+    ```bash
+    POSTGRES_USER=your-pg-db-username       # change it
+    POSTGRES_PASSWORD=your-pg-db-password   #change it
+    POSTGRES_DB=twtai                       # Don't change it
+    NEXTAUTH_SECRET="AUTH_SECRET" from .env.local
+    ```
+
+5. **Set Up PostgreSQL Database with Docker:**
    ```bash
-    docker-compose up -d
+    docker-compose up -d        # up the docker container for psql
+    docker exec -it  <container-name> psql -U <dataBaseUserName> <dataBaseName>                 # open docker terminal in intereactive mode
     ```
-5. **Migrate the Database**
-    ```
+6. **Migrate the Database**
+    ```bash
     pnpm dlx prisma generate
     pnpm dlx prisma migrate deploy
     ```
 
-6. **Seed the Database**
-    ```
-    pnpm dlx prisma db seed # this willl add some dummy data in db
+7. **Seed the Database**
+    ```bash
+    pnpm exec prisma db seed # this willl add some dummy data in db
     ```
 
-7. **Run server**
-    ```
+8. **Run server**
+    ```bash
     pnpm run dev
     ```
-8. **Dummy email and pass to login**
-    ```
+9. **Dummy email and pass to login**
+    ```bash
     email: johndoe@example.com
     pass: johndoepass
 
