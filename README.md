@@ -95,7 +95,7 @@ Once the server is running, navigate to the app in your browser. You'll be able 
 Contributions are welcome!  
 Please fork the repository and create a pull request for any features or bug fixes.
 
-## Licence
+## License
 Copyright (c) 2024 Twtai
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, without any restrictions.
