@@ -1,4 +1,4 @@
-import { Login } from "@/components/pages/form";
+import { Login } from "@/no-use-auths/form";
 // "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { signIn } from "@/no-use-auths/auth";

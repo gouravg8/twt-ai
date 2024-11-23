@@ -1,4 +1,3 @@
-import { SignOutCompo } from "@/app/page";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -46,7 +45,7 @@ const NavBar = async () => {
 						<DropdownMenuItem>Create</DropdownMenuItem>
 					</Link>
 					<DropdownMenuItem>Billing</DropdownMenuItem>
-					{/* show login/signout based on user logged in or not */}
+					{/* TODO: show login/signout based on user logged in or not */}
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>
