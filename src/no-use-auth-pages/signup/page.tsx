@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import type React from "react";
-import { Signup } from "@/components/client/form";
+import { Signup } from "@/components/pages/form";
 
 const page = () => {
 	function signup(arg0: { name: string; email: string; password: string }) {

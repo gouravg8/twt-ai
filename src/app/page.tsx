@@ -1,4 +1,4 @@
-import Main from "@/components/Main";
+import Main from "@/components/pages/Main";
 import { auth, signOut } from "@/lib/auth";
 import { signOutAction } from "@/actions/auth.action";
 

@@ -1,7 +1,7 @@
 // "use client";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { Login } from "@/components/client/form";
+import { Login } from "@/components/pages/form";
 import { signIn } from "@/lib/auth";
 import { headers } from "next/headers";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";

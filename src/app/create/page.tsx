@@ -1,5 +1,5 @@
 "use client";
-import TweetSkeleton from "@/components/TweetSkeleton";
+import TweetSkeleton from "@/components/pages/TweetSkeleton";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import {
