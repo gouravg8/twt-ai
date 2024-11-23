@@ -40,11 +40,8 @@ const Main = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1, duration: 0.5 }}
 				>
-					<Link className="w-fit" href={"/signup"}>
-						<Button
-							onClick={() => "/login"}
-							className="bg-[--main-color] text-white px-5 py-2 md:px-8 md:py-6 md:text-xl md:font-normal my-5 font-semibold"
-						>
+					<Link className="w-fit" href={"/api/auth/login"}>
+						<Button className="bg-[--main-color] text-white px-5 py-2 md:px-8 md:py-6 md:text-xl md:font-normal my-5 font-semibold">
 							Start Creating
 						</Button>
 					</Link>

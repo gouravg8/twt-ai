@@ -54,7 +54,7 @@ const NavBar = async () => {
 							<SignOutCompo />
 						</DropdownMenuItem>
 					) : (
-						<Link href={"/login"}>
+						<Link href={"/api/auth/login"}>
 							<DropdownMenuItem>Log in</DropdownMenuItem>
 						</Link>
 					)}
