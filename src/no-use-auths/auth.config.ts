@@ -1,8 +1,8 @@
-import { type NextAuthConfig, CredentialsSignin } from "next-auth";
-import Google from "next-auth/providers/google";
-import CredentialProvider from "next-auth/providers/credentials";
-import prisma from "../db";
 import { compare } from "bcryptjs/";
+import { CredentialsSignin, type NextAuthConfig } from "next-auth";
+import CredentialProvider from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
+import prisma from "../db";
 
 export const authConfig: NextAuthConfig = {
 	providers: [

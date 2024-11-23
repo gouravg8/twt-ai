@@ -10,9 +10,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"lint:all": "biome lint --write ./src --ignore-path=./ui",
-		"format:all": "biome format --write ./src --ignore-path=./ui",
-		"check:all": "biome check --write ./src --ignore-path=./ui"
+		"lint:all": "biome lint --write ./src",
+		"format:all": "biome format --write ./src",
+		"check:all": "biome check --write ./src"
 	},
 	"dependencies": {
 		"@auth/prisma-adapter": "^2.5.3",

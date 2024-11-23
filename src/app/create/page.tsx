@@ -1,7 +1,6 @@
 "use client";
 import TweetSkeleton from "@/components/pages/TweetSkeleton";
-import Link from "next/link";
-import React, { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
 	Select,
 	SelectContent,
@@ -9,8 +8,9 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { moods, categories } from "@/constants";
+import { categories, moods } from "@/constants";
+import Link from "next/link";
+import React, { useRef, useState } from "react";
 
 const page = () => {
 	// TODO: create tweet

@@ -1,7 +1,7 @@
 "use server";
-import { signIn } from "@/lib/auth";
-import { AuthError, CredentialsSignin } from "next-auth";
+import { signIn } from "@/no-use-auths/auth";
 import type { Login } from "@/types/auth.types";
+import { AuthError, CredentialsSignin } from "next-auth";
 
 const credentialLogin = async ({
 	email,

@@ -1,11 +1,11 @@
 "use client";
+import { credentialLogin } from "@/no-use-auths/actions/login.action";
+import { credentialSignup } from "@/no-use-auths/actions/signup.action";
 import { toast } from "@/hooks/use-toast";
 import { Label } from "@radix-ui/react-dropdown-menu";
+import { redirect } from "next/navigation";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { credentialLogin } from "@/actions/login.action";
-import { credentialSignup } from "@/actions/signup.action";
-import { redirect } from "next/navigation";
 
 const Login = () => {
 	const handleLogin = async (formData: FormData) => {
