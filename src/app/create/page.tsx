@@ -9,19 +9,58 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { categories, moods } from "@/constants";
-import Link from "next/link";
+import axios from "axios";
 import React, { useRef, useState } from "react";
 
 const page = () => {
 	// TODO: create tweet
-	const [isLoaded, setIsLoaded] = useState(true);
-	const [haveTweet, setHaveTweet] = useState(true);
-	const [tweet, setTweet] = useState("No tweet");
+	const [isLoading, setIsLoading] = useState(false);
+	const [tweet, setTweet] = useState("");
 	const tweetRef = useRef(null);
+	const [mood, setMood] = useState("");
+	const [category, setCategory] = useState("");
+
+	async function fetchData(mood: string, category: string) {
+		setIsLoading(true);
+		try {
+			const res = await axios.post("/api/create", {
+				model: "@cf/meta/llama-3-8b-instruct",
+				input: {
+					messages: [
+						{
+							role: "system",
+							content: "You are a friendly assistan that helps write tweets",
+						},
+						{
+							role: "user",
+							content: `Write a short tweet as a human like language, when the mood is ${mood} and category is ${category}`,
+						},
+					],
+				},
+			});
+			setIsLoading(false);
+			return res.data;
+		} catch (error) {
+			setIsLoading(false);
+			console.error("Error fetching data:", error);
+		}
+	}
+
+	const createTweet = async () => {
+		const resTweet = await fetchData(mood, category);
+		if (resTweet) {
+			console.log(resTweet);
+
+			setTweet(resTweet.result.response);
+		} else {
+			setTweet("No tweet");
+		}
+	};
+
 	return (
 		<div className="h-[50vh] md:h-[65vh] flex flex-col items-center my-16">
 			<div className="flex justify-around gap-10">
-				<Select>
+				<Select onValueChange={(value) => setMood(value)}>
 					<SelectTrigger className="w-[120px] bg-slate-200 border-0">
 						<SelectValue placeholder="Mood" />
 					</SelectTrigger>
@@ -34,7 +73,7 @@ const page = () => {
 					</SelectContent>
 				</Select>
 
-				<Select>
+				<Select onValueChange={(value) => setCategory(value)}>
 					<SelectTrigger className="w-[120px] bg-slate-200 border-0">
 						<SelectValue placeholder="Topic" />
 					</SelectTrigger>
@@ -47,26 +86,21 @@ const page = () => {
 					</SelectContent>
 				</Select>
 			</div>
-			<Link href={""}>
-				<Button
-					size={"lg"}
-					className="bg-[--main-color] w-fit mx-auto text-white px-5 py-2 my-5 font-semibold"
-				>
-					Create
-				</Button>
-			</Link>
+			<Button
+				onClick={createTweet}
+				size={"lg"}
+				className="bg-[--main-color] w-fit mx-auto text-white px-5 py-2 my-5 font-semibold"
+			>
+				Create
+			</Button>
 
-			<div className="w-5/6 my-6 mx-auto border border-dashed px-6 rounded-md">
-				{haveTweet ? (
-					!isLoaded ? (
-						<TweetSkeleton />
-					) : (
-						<div ref={tweetRef} className="px-2 py-6">
-							{tweet}
-						</div>
-					)
+			<div className="w-5/6 my-6 mx	-auto border border-dashed px-6 rounded-md">
+				{isLoading ? (
+					<TweetSkeleton />
 				) : (
-					<></>
+					<div ref={tweetRef} className="px-2 py-6">
+						{tweet ? tweet : "No Tweets"}
+					</div>
 				)}
 			</div>
 		</div>
