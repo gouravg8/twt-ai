@@ -1,9 +1,9 @@
 "use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Button } from "./ui/button";
-import { motion } from "framer-motion";
+import { Button } from "../ui/button";
 
 const Main = () => {
 	const imgUrl = ["tweet.jpg", "tweet.jpg"];

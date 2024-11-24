@@ -1,6 +1,4 @@
-import Main from "@/components/Main";
-import { auth, signOut } from "@/lib/auth";
-import { signOutAction } from "@/actions/auth.action";
+import Main from "@/components/pages/Main";
 
 export default async function Home() {
 	return (
@@ -12,14 +10,5 @@ export default async function Home() {
 }
 
 export async function SignOutCompo() {
-	const session = await auth();
-	return (
-		<>
-			{session && (
-				<form action={signOutAction}>
-					<button type="submit">Log Out</button>
-				</form>
-			)}
-		</>
-	);
+	return <></>;
 }

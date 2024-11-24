@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,12 +5,12 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { RiMenu3Line } from "@remixicon/react";
-import { SignOutCompo } from "@/app/page";
-import { auth } from "@/lib/auth";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const NavBar = async () => {
 	// TODO: add authentication
-	const session = await auth();
 	return (
 		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 md:py-3 bg-slate-100 border-b">
 			<Link
@@ -40,7 +37,7 @@ const NavBar = async () => {
 				>
 					<Link href={"/profile"}>
 						<DropdownMenuItem className="text-base font-semibold">
-							{session?.user?.name}
+							{/* TODO: add the user name if Logged in */}
 						</DropdownMenuItem>
 					</Link>
 
@@ -48,16 +45,7 @@ const NavBar = async () => {
 						<DropdownMenuItem>Create</DropdownMenuItem>
 					</Link>
 					<DropdownMenuItem>Billing</DropdownMenuItem>
-
-					{session?.user ? (
-						<DropdownMenuItem>
-							<SignOutCompo />
-						</DropdownMenuItem>
-					) : (
-						<Link href={"/api/auth/login"}>
-							<DropdownMenuItem>Log in</DropdownMenuItem>
-						</Link>
-					)}
+					{/* TODO: show login/signout based on user logged in or not */}
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>
