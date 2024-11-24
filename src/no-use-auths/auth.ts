@@ -1,8 +1,8 @@
 import NextAuth, { CredentialsSignin } from "next-auth";
 import prisma from "../db";
+import type { User } from "../types/auth.types";
 // import { PrismaAdapter } from "@auth/prisma-adapter";
 import { authConfig } from "./auth.config";
-import type { User } from "../types/auth.types";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
 	...authConfig,

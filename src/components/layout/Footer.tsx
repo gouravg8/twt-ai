@@ -1,6 +1,6 @@
+import { RiLinkedinLine, RiTwitterXLine } from "@remixicon/react";
 import Link from "next/link";
 import React from "react";
-import { RiTwitterXLine, RiLinkedinLine } from "@remixicon/react";
 
 const Footer = () => {
 	return (

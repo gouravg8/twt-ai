@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Signup } from "@/no-use-auths/form";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import type React from "react";
-import { Signup } from "@/components/client/form";
 
 const page = () => {
 	function signup(arg0: { name: string; email: string; password: string }) {

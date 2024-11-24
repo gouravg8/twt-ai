@@ -1,10 +1,10 @@
+import { Login } from "@/no-use-auths/form";
 // "use client";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import Link from "next/link";
-import { Login } from "@/components/client/form";
-import { signIn } from "@/lib/auth";
-import { headers } from "next/headers";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { signIn } from "@/no-use-auths/auth";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { headers } from "next/headers";
+import Link from "next/link";
 
 const page = () => {
 	const hs = headers();

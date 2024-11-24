@@ -1,5 +1,5 @@
 "use server";
-import { signIn, signOut } from "@/lib/auth";
+import { signIn, signOut } from "@/no-use-auths/auth";
 import { AuthError } from "next-auth";
 
 // credential login

@@ -1,41 +1,11 @@
-import { auth } from "@/lib/auth";
-import NextAuth from "next-auth";
-
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { authConfig } from "./lib/auth.config";
-
-export default NextAuth(authConfig).auth;
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-	const session = await auth();
 	const headers = new Headers(request.headers);
 	headers.set("x-current-path", request.nextUrl.pathname);
 
-	if (session?.user) {
-		if (
-			// request.nextUrl.pathname.startsWith("/") ||
-			request.nextUrl.pathname.startsWith("/signup") ||
-			request.nextUrl.pathname.startsWith("/login")
-		) {
-			// return NextResponse.rewrite(new URL("/create", request.url));
-			return NextResponse.rewrite(new URL("/create", request.url));
-		}
-	} else {
-		if (
-			// request.nextUrl.pathname.startsWith("/") ||
-			request.nextUrl.pathname.startsWith("/create") ||
-			request.nextUrl.pathname.startsWith("/profile")
-		) {
-			console.log("mw, loginurl", {
-				requrl: request.url,
-				path: request.nextUrl.pathname,
-				// sp: loginUrl,
-			});
-
-			return NextResponse.rewrite(new URL("/api/auth/login", request.url));
-		}
-	}
+	// TODO: add the logic to redirect user to /create if loggedin and want to access the /login, /signin or /signup
+	// TODO: to loggin if the user is not logged in and want to access the /profile or /create
 	return NextResponse.next({ headers });
 }
 
