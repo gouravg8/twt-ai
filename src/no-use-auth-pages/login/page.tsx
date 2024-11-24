@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Login } from "@/components/client/form";
 import { signIn } from "@/lib/auth";
 import { headers } from "next/headers";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 const page = () => {
 	const hs = headers();

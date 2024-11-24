@@ -33,7 +33,7 @@ export async function middleware(request: NextRequest) {
 				// sp: loginUrl,
 			});
 
-			return NextResponse.rewrite(new URL("/login", request.url));
+			return NextResponse.rewrite(new URL("/api/auth/login", request.url));
 		}
 	}
 	return NextResponse.next({ headers });
