@@ -94,7 +94,7 @@ const page = () => {
 				Create
 			</Button>
 
-			<div className="w-5/6 my-6 mx	-auto border border-dashed px-6 rounded-md">
+			<div className="w-5/6 my-6 lg:w-1/2 mx-auto border border-dashed px-6 rounded-md">
 				{isLoading ? (
 					<TweetSkeleton />
 				) : (
