@@ -8,9 +8,12 @@ import { RiMenu3Line } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const NavBar = async () => {
-	// TODO: add authentication
+	const { getUser } = getKindeServerSession();
+	const user = await getUser();
 	return (
 		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 md:py-3 bg-slate-100 border-b">
 			<Link
@@ -35,17 +38,31 @@ const NavBar = async () => {
 					align="end"
 					className="bg-slate-100 border-0 mt-3 shadow-lg"
 				>
-					<Link href={"/profile"}>
-						<DropdownMenuItem className="text-base font-semibold">
-							{/* TODO: add the user name if Logged in */}
-						</DropdownMenuItem>
-					</Link>
+					{user && (
+						<Link href={"/profile"}>
+							<DropdownMenuItem className="text-base font-semibold cursor-pointer">
+								{user?.given_name} !
+							</DropdownMenuItem>
+						</Link>
+					)}
 
 					<Link href={"/create"}>
-						<DropdownMenuItem>Create</DropdownMenuItem>
+						<DropdownMenuItem className="cursor-pointer">
+							Create
+						</DropdownMenuItem>
 					</Link>
-					<DropdownMenuItem>Billing</DropdownMenuItem>
-					{/* TODO: show login/signout based on user logged in or not */}
+					<DropdownMenuItem className="cursor-pointer">
+						Billing
+					</DropdownMenuItem>
+					{user ? (
+						<DropdownMenuItem>
+							<LogoutLink className="cursor-pointer">Logout</LogoutLink>
+						</DropdownMenuItem>
+					) : (
+						<DropdownMenuItem className="cursor-pointer">
+							<LoginLink>Login</LoginLink>
+						</DropdownMenuItem>
+					)}
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>
