@@ -12,7 +12,6 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const NavBar = async () => {
-	// TODO: add authentication
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
 	return (
@@ -42,7 +41,6 @@ const NavBar = async () => {
 					{user && (
 						<Link href={"/profile"}>
 							<DropdownMenuItem className="text-base font-semibold cursor-pointer">
-								{/* TODO: add the user name if Logged in */}
 								{user?.given_name} !
 							</DropdownMenuItem>
 						</Link>
@@ -56,7 +54,6 @@ const NavBar = async () => {
 					<DropdownMenuItem className="cursor-pointer">
 						Billing
 					</DropdownMenuItem>
-					{/* TODO: show login/signout based on user logged in or not */}
 					{user ? (
 						<DropdownMenuItem>
 							<LogoutLink className="cursor-pointer">Logout</LogoutLink>
