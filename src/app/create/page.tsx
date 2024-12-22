@@ -20,6 +20,11 @@ const Page = () => {
 	const [category, setCategory] = useState("");
 
 	async function fetchData(mood: string, category: string) {
+		if (!mood || !category) {
+			alert("Please select mood and category");
+			return;
+		}
+		
 		setIsLoading(true);
 		try {
 			const res = await axios.post("/api/create", {
