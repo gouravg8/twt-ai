@@ -4,8 +4,22 @@ export async function middleware(request: NextRequest) {
 	const headers = new Headers(request.headers);
 	headers.set("x-current-path", request.nextUrl.pathname);
 
-	// TODO: add the logic to redirect user to /create if loggedin and want to access the /login, /signin or /signup
-	// TODO: to loggin if the user is not logged in and want to access the /profile or /create
+	const pathname = request.nextUrl.pathname;
+	if (
+		pathname === "/login" ||
+		pathname === "/signup" ||
+		pathname === "/signin"
+	) {
+		if (request.cookies.has("id_token")) {
+			return NextResponse.redirect(new URL("/create", request.url));
+		}
+	}
+
+	if (pathname === "/profile" || pathname === "/create") {
+		if (!request.cookies.has("id_token")) {
+			return NextResponse.redirect(new URL("/api/auth/login", request.url));
+		}
+	}
 	return NextResponse.next({ headers });
 }
 

@@ -13,14 +13,14 @@ const Main = () => {
 				<motion.h1
 					initial={{ opacity: 0, x: 20 }}
 					animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
-					className="md:text-5xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
+					className="md:text-6xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
 				>
 					Elevate Your Twitter Game <br />
 				</motion.h1>
 				<motion.h1
 					initial={{ opacity: 0, x: -20 }}
 					animate={{ opacity: 1, x: 0, transition: { duration: 0.5 } }}
-					className="w-fit bg-[--main-color] text-white px-4 clip-poly md:clip-poly-md md:text-5xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
+					className="w-fit bg-[--main-color] text-white px-4 clip-poly md:clip-poly-md md:text-6xl text-4xl mx-auto font-poppins font-bold md:leading-snug"
 				>
 					with Ai
 				</motion.h1>
@@ -56,7 +56,7 @@ const Main = () => {
 				{imgUrl.map((item, index) => (
 					<div key={index.toString() + item}>
 						<Image
-							className={`shadow-2xl rounded-md w-2/3 ${index % 2 === 0 ? "absolute top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/6 z-20" : "relative z-10"}`}
+							className={`shadow-2xl shadow-[--main-color] rounded-md w-2/3 ${index % 2 === 0 ? "absolute top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/6 z-20" : "relative z-10"}`}
 							width={500}
 							height={0}
 							src={"/tweet1.png"}

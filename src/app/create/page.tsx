@@ -13,7 +13,6 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 
 const page = () => {
-	// TODO: create tweet
 	const [isLoading, setIsLoading] = useState(false);
 	const [tweet, setTweet] = useState("");
 	const tweetRef = useRef(null);
