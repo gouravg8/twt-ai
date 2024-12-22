@@ -9,6 +9,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { categories, moods } from "@/constants";
+import { CopyIcon } from "@radix-ui/react-icons";
 import axios from "axios";
 import React, { useRef, useState } from "react";
 
@@ -102,7 +103,11 @@ const Page = () => {
 				{isLoading ? (
 					<TweetSkeleton />
 				) : (
-					<div ref={tweetRef} className="px-2 py-6">
+					<div ref={tweetRef} className="px-2 py-6 relative">
+						<CopyIcon
+							className="text-gray-500 absolute -right-2 top-2 cursor-pointer"
+							onClick={() => window.navigator.clipboard.writeText(tweet)}
+						/>
 						{tweet ? tweet : "No Tweets"}
 					</div>
 				)}
