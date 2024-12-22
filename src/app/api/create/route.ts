@@ -2,7 +2,6 @@ import axios from "axios";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-	const { method } = req;
 	const { model, input } = await req.json();
 	// Process a POST request
 	try {

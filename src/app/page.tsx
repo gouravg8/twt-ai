@@ -8,7 +8,3 @@ export default async function Home() {
 		</>
 	);
 }
-
-export async function SignOutCompo() {
-	return <></>;
-}

@@ -12,7 +12,7 @@ import { categories, moods } from "@/constants";
 import axios from "axios";
 import React, { useRef, useState } from "react";
 
-const page = () => {
+const Page = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [tweet, setTweet] = useState("");
 	const tweetRef = useRef(null);
@@ -106,4 +106,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;
