@@ -24,7 +24,7 @@ const Page = () => {
 			alert("Please select mood and category");
 			return;
 		}
-		
+
 		setIsLoading(true);
 		try {
 			const res = await axios.post("/api/create", {
@@ -37,7 +37,7 @@ const Page = () => {
 						},
 						{
 							role: "user",
-							content: `Write a short tweet as a human like language, when the mood is ${mood} and category is ${category}`,
+							content: `Write a short tweet as a human like language with indian nationality, when the mood is ${mood} and category is ${category}`,
 						},
 					],
 				},
