@@ -3,7 +3,7 @@ import React from "react";
 
 const loading = () => {
 	return (
-		<div className="min-w-full absolute min-h-screen flex justify-center items-center bg-[]">
+		<div className="min-w-full absolute min-h-screen flex justify-center items-center bg-white">
 			<Image
 				src="/twtlogo.svg"
 				alt="loading"
