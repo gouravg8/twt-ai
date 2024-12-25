@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import Loading from "../loading";
+import { usePathname } from "next/navigation";
 
 interface User {
 	id: string;
@@ -20,6 +21,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
 	const [user, setUser] = useState<User | null>(null);
+	const pathname = usePathname();
 
 	useEffect(() => {
 		const getKindeSession = async () => {
@@ -31,7 +33,7 @@ const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
 		getKindeSession();
 	}, []);
 
-	if (user === null) {
+	if (pathname !== "/" && user === null) {
 		return <Loading />;
 	}
 
