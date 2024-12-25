@@ -104,11 +104,15 @@ const Page = () => {
 					<TweetSkeleton />
 				) : (
 					<div ref={tweetRef} className="px-2 py-6 relative">
-						<CopyIcon
-							className="text-gray-500 absolute -right-2 top-2 cursor-pointer"
-							onClick={() => window.navigator.clipboard.writeText(tweet)}
-						/>
-						{tweet ? tweet : "No Tweets"}
+						{tweet && (
+							<CopyIcon
+								className="text-gray-500 absolute -right-2 top-2 cursor-pointer"
+								onClick={() => window.navigator.clipboard.writeText(tweet)}
+							/>
+						)}
+						<p className={!tweet ? "text-gray-500" : ""}>
+							{tweet ? tweet : "Generated tweet will appear here"}
+						</p>
 					</div>
 				)}
 			</div>

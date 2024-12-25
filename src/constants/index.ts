@@ -1,4 +1,5 @@
 export const moods = [
+	"funny",
 	"amused",
 	"angry",
 	"anxious",
