@@ -9,9 +9,11 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { categories, moods } from "@/constants";
-import { CopyIcon } from "@radix-ui/react-icons";
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { use, useRef, useState } from "react";
+import { IoCopyOutline } from "react-icons/io5";
+import { useToast } from "@/hooks/use-toast";
+import "@/app/globals.css";
 
 const Page = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -20,12 +22,9 @@ const Page = () => {
 	const [mood, setMood] = useState("");
 	const [category, setCategory] = useState("");
 
-	async function fetchData(mood: string, category: string) {
-		if (!mood || !category) {
-			alert("Please select mood and category");
-			return;
-		}
+	const { toast } = useToast();
 
+	async function fetchData(mood: string, category: string) {
 		setIsLoading(true);
 		try {
 			const res = await axios.post("/api/create", {
@@ -33,14 +32,29 @@ const Page = () => {
 				category,
 			});
 			setIsLoading(false);
+			toast({
+				description: "Tweet generated successfully",
+				variant: "success",
+			});
 			return res.data;
 		} catch (error) {
 			setIsLoading(false);
-			console.error("Error fetching data:", error);
+			toast({
+				description: "Error generating tweet",
+				variant: "destructive",
+			});
 		}
 	}
 
 	const createTweet = async () => {
+		if (!mood || !category) {
+			toast({
+				description: "Please select mood and category",
+				variant: "destructive",
+			});
+			return;
+		}
+
 		const resTweet = await fetchData(mood, category);
 		if (resTweet) {
 			console.log(resTweet);
@@ -82,8 +96,8 @@ const Page = () => {
 			</div>
 			<Button
 				onClick={createTweet}
-				size={"lg"}
-				className="bg-[--main-color] w-fit mx-auto text-white px-5 py-2 my-5 font-semibold"
+				size={"default"}
+				className="bg-[--main-color] hover:bg-[--main-color-dark-1] w-fit mx-auto text-white px-5 py-2 my-5 font-semibold"
 			>
 				Create
 			</Button>
@@ -94,9 +108,15 @@ const Page = () => {
 				) : (
 					<div ref={tweetRef} className="px-2 py-6 relative">
 						{tweet && (
-							<CopyIcon
-								className="text-gray-500 absolute -right-2 top-2 cursor-pointer"
-								onClick={() => window.navigator.clipboard.writeText(tweet)}
+							<IoCopyOutline
+								className="text-gray-500 absolute -right-1 top-3 cursor-pointer"
+								onClick={() => {
+									window.navigator.clipboard.writeText(tweet);
+									toast({
+										description: "Tweet copied to clipboard biro",
+										variant: "success",
+									});
+								}}
 							/>
 						)}
 						<p className={!tweet ? "text-gray-500" : ""}>
