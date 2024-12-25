@@ -5,7 +5,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "../context/UserContext";
 
-const page = () => {
+const Page = () => {
 	const { toast } = useToast();
 	const { user } = useUser();
 
@@ -62,4 +62,4 @@ const page = () => {
 		</div>
 	);
 };
-export default page;
+export default Page;
