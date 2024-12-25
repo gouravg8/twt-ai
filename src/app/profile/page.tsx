@@ -3,9 +3,12 @@ import Image from "next/image";
 import React from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useToast } from "@/hooks/use-toast";
+import { useUser } from "../context/UserContext";
 
 const page = () => {
 	const { toast } = useToast();
+	const { user } = useUser();
+
 	return (
 		<div className="lg:w-2/3 xl:w-1/2 mx-auto">
 			<div className="w-5/6 mx-auto rounded-md bg-gray-200 px-4 py-8 flex flex-col md:flex-row md:justify-center md:gap-20 items-center gap-2 mt-12 mb-6">
@@ -19,10 +22,12 @@ const page = () => {
 				<div className="flex flex-col gap-2">
 					<p>
 						<span>Name: </span>
-						<span className="font-semibold">Gourav soni</span>
+						<span className="font-semibold">
+							{`${user?.given_name} ${user?.family_name}`}
+						</span>
 					</p>
 					<p>
-						<span>Email: </span> <span>faltuhunbiro@gmail.com</span>
+						<span>Email: </span> <span>{user?.email}</span>
 					</p>
 				</div>
 			</div>

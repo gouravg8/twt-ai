@@ -4,19 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { useUser } from "@/app/context/UserContext";
 
 const Main = () => {
-	const [user, setUser] = useState();
-
-	useEffect(() => {
-		const getKindeSession = async () => {
-			const res = await fetch("/api/kindeSession");
-			const data = await res.json();
-			setUser(data.user);
-		};
-
-		getKindeSession();
-	}, []);
+	const { user } = useUser();
 
 	const imgUrl = ["tweet.jpg", "tweet.jpg"];
 	return (
