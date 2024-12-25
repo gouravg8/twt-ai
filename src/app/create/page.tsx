@@ -29,19 +29,8 @@ const Page = () => {
 		setIsLoading(true);
 		try {
 			const res = await axios.post("/api/create", {
-				model: "@cf/meta/llama-3-8b-instruct",
-				input: {
-					messages: [
-						{
-							role: "system",
-							content: "You are a friendly assistan that helps write tweets",
-						},
-						{
-							role: "user",
-							content: `Write a short tweet as a human like language with indian nationality, when the mood is ${mood} and category is ${category}`,
-						},
-					],
-				},
+				mood,
+				category,
 			});
 			setIsLoading(false);
 			return res.data;
