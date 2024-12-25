@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/select";
 import { categories, moods } from "@/constants";
 import axios from "axios";
-import React, { use, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useToast } from "@/hooks/use-toast";
 import "@/app/globals.css";
@@ -37,7 +37,7 @@ const Page = () => {
 				variant: "success",
 			});
 			return res.data;
-		} catch (error) {
+		} catch {
 			setIsLoading(false);
 			toast({
 				description: "Error generating tweet",
