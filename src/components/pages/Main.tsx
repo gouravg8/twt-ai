@@ -28,7 +28,7 @@ const Main = () => {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.5, duration: 0.5 }}
-					className="text-gray-500 mt-10 mb-5 w-5/6 font-medium mx-auto text-lg"
+					className="text-gray-500 mt-10 mb-5 w-5/6 font-medium mx-auto text-xl"
 				>
 					Your ultimate AI-powered tool for crafting the perfect tweets
 					effortlessly
@@ -56,7 +56,7 @@ const Main = () => {
 				{imgUrl.map((item, index) => (
 					<div key={index.toString() + item}>
 						<Image
-							className={`shadow-2xl shadow-[--main-color] rounded-md w-2/3 ${index % 2 === 0 ? "absolute top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/6 z-20" : "relative z-10"}`}
+							className={`shadow-2xl rounded-md w-2/3 ${index % 2 === 0 ? "absolute top-1/2 left-1/2 -translate-x-1/3 -translate-y-1/6 z-20" : "relative z-10"}`}
 							width={500}
 							height={0}
 							src={"/tweet1.png"}
