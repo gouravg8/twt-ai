@@ -57,8 +57,6 @@ const Page = () => {
 
 		const resTweet = await fetchData(mood, category);
 		if (resTweet) {
-			console.log(resTweet);
-
 			setTweet(resTweet.result.response);
 		} else {
 			setTweet("No tweet");
@@ -113,7 +111,7 @@ const Page = () => {
 								onClick={() => {
 									window.navigator.clipboard.writeText(tweet);
 									toast({
-										description: "Tweet copied to clipboard biro",
+										description: "Tweet copied to clipboard",
 										variant: "success",
 									});
 								}}
