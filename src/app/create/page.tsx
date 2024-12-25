@@ -29,19 +29,8 @@ const Page = () => {
 		setIsLoading(true);
 		try {
 			const res = await axios.post("/api/create", {
-				model: "@cf/meta/llama-3-8b-instruct",
-				input: {
-					messages: [
-						{
-							role: "system",
-							content: "You are a friendly assistan that helps write tweets",
-						},
-						{
-							role: "user",
-							content: `Write a short tweet as a human like language with indian nationality, when the mood is ${mood} and category is ${category}`,
-						},
-					],
-				},
+				mood,
+				category,
 			});
 			setIsLoading(false);
 			return res.data;
@@ -104,11 +93,15 @@ const Page = () => {
 					<TweetSkeleton />
 				) : (
 					<div ref={tweetRef} className="px-2 py-6 relative">
-						<CopyIcon
-							className="text-gray-500 absolute -right-2 top-2 cursor-pointer"
-							onClick={() => window.navigator.clipboard.writeText(tweet)}
-						/>
-						{tweet ? tweet : "No Tweets"}
+						{tweet && (
+							<CopyIcon
+								className="text-gray-500 absolute -right-2 top-2 cursor-pointer"
+								onClick={() => window.navigator.clipboard.writeText(tweet)}
+							/>
+						)}
+						<p className={!tweet ? "text-gray-500" : ""}>
+							{tweet ? tweet : "Generated tweet will appear here"}
+						</p>
 					</div>
 				)}
 			</div>
