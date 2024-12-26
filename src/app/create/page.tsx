@@ -14,7 +14,10 @@ import React, { useRef, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useToast } from "@/hooks/use-toast";
 import "@/app/globals.css";
-import UseAnimations from "react-useanimations";
+import dynamic from "next/dynamic";
+const UseAnimations = dynamic(() => import("react-useanimations"), {
+	ssr: false,
+});
 import loading from "react-useanimations/lib/loading";
 
 const Page = () => {
