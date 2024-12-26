@@ -8,8 +8,11 @@ import { RiMenu3Line } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
+import {
+	getKindeServerSession,
+	LoginLink,
+	LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 
 const NavBar = async () => {
 	const { getUser } = getKindeServerSession();
