@@ -14,6 +14,8 @@ import React, { useRef, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useToast } from "@/hooks/use-toast";
 import "@/app/globals.css";
+import UseAnimations from "react-useanimations";
+import loading from "react-useanimations/lib/loading";
 
 const Page = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -95,8 +97,19 @@ const Page = () => {
 			<Button
 				onClick={createTweet}
 				size={"default"}
-				className="bg-[--main-color] hover:bg-[--main-color-dark-1] w-fit mx-auto text-white px-5 py-2 my-5 font-semibold"
+				className="bg-[--main-color] hover:bg-[--main-color-dark-1] w-fit mx-auto text-white px-3 py-2 my-5 font-semibold"
+				disabled={isLoading}
 			>
+				{isLoading && (
+					<UseAnimations
+						className="mr-2"
+						animation={loading}
+						size={25}
+						autoplay
+						strokeColor="white"
+						loop
+					/>
+				)}
 				Create
 			</Button>
 
