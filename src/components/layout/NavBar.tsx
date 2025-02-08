@@ -9,6 +9,7 @@ import { RiMenu3Line } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { useUser } from "@/app/context/UserContext";
 
