@@ -1,3 +1,4 @@
+"use client";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,15 +9,12 @@ import { RiMenu3Line } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {
-	getKindeServerSession,
-	LoginLink,
-	LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/server";
 
-const NavBar = async () => {
-	const { getUser } = getKindeServerSession();
-	const user = await getUser();
+import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { useUser } from "@/app/context/UserContext";
+
+const NavBar = () => {
+	const { user, setUser } = useUser();
 	return (
 		<div className="flex justify-between align-middle items-center pl-6 pr-2 py-1 md:py-3 bg-slate-100 border-b">
 			<Link
@@ -59,7 +57,12 @@ const NavBar = async () => {
 					</DropdownMenuItem>
 					{user ? (
 						<DropdownMenuItem>
-							<LogoutLink className="cursor-pointer">Logout</LogoutLink>
+							<LogoutLink
+								className="cursor-pointer"
+								onClick={() => setUser(null)}
+							>
+								Logout
+							</LogoutLink>
 						</DropdownMenuItem>
 					) : (
 						<DropdownMenuItem className="cursor-pointer">

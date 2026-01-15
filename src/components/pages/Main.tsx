@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
+import { useUser } from "@/app/context/UserContext";
 
 const Main = () => {
+	const { user } = useUser();
+
 	const imgUrl = ["tweet.jpg", "tweet.jpg"];
 	return (
 		<div className="flex flex-col md:flex-row md:gap-0 md:items-center md:h-[85vh] md:my-auto justify-center align-middle text-center my-12">
@@ -40,7 +43,7 @@ const Main = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1, duration: 0.5 }}
 				>
-					<Link className="w-fit" href={"/api/auth/login"}>
+					<Link className="w-fit" href={user ? "/create" : "/api/auth/login"}>
 						<Button className="bg-[--main-color] hover:bg-[--main-color-dark-1] text-white px-5 py-2 md:px-8 md:py-6 md:text-xl md:font-normal my-5 font-semibold">
 							Start Creating
 						</Button>

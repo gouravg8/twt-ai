@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import NavBar from "@/components/layout/NavBar";
 import { Toaster } from "@/components/ui/toaster";
 import type { Viewport } from "next";
+import UserContextProvider from "./context/UserContext";
 
 export const metadata: Metadata = {
 	title: "twt Ai",
@@ -25,10 +26,12 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="light">
 			<body className="flex flex-col justify-between min-h-screen">
-				<NavBar />
-				{children}
-				<Footer />
-				<Toaster />
+				<UserContextProvider>
+					<NavBar />
+					{children}
+					<Footer />
+					<Toaster />
+				</UserContextProvider>
 			</body>
 		</html>
 	);
